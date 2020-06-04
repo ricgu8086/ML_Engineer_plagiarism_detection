@@ -5,9 +5,9 @@ import os
 import pandas as pd
 
 from sklearn.externals import joblib
-
 ## TODO: Import any additional libraries you need to define a model
 
+from sklearn.ensemble import ExtraTreesClassifier
 
 # Provided model load function
 def model_fn(model_dir):
@@ -54,13 +54,17 @@ if __name__ == '__main__':
     
     ## --- Your code here --- ##
     
+    # As this dataset contains a big correlation among features, it would be a good idea to choose a model
+    # that's capable to deal with this, hence I decided to go with ExtraTreesClassifier
+    # https://machinelearningmastery.com/feature-selection-with-real-and-categorical-data/
+    
 
     ## TODO: Define a model 
-    model = None
+    model = ExtraTreesClassifier() # default parameters are fine at this moment.
     
     
     ## TODO: Train the model
-    
+    model = model.fit(train_x, train_y)
     
     
     ## --- End of your code  --- ##
